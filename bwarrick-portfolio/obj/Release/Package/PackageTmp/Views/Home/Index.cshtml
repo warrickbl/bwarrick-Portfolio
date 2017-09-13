@@ -1,0 +1,1418 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>     
+        Briana Warrick Personal
+    </title>
+    
+
+    <!-- CSS -->
+    <!-- Bootstrap core CSS -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <link href="~/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="~/Content/SyntaxHighlighter/shCoreEclipse.css" rel="stylesheet" />
+    <link href="~/Content/SyntaxHighlighter/shThemeEclipse.css" rel="stylesheet" />
+
+    <!-- Font Awesome CSS -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
+
+    <!-- Elegant icons CSS -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
+
+    <!--[if lte IE 7]>
+        <script src="assets/js/icons-lte-ie7.js"></script>
+    <![endif]-->
+    <!-- Magnific-popup lightbox -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/magnific-popup.css" rel="stylesheet">
+
+    <!-- Owl Carousel -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/owl.theme.css" rel="stylesheet">
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/owl.carousel.css" rel="stylesheet">
+
+    <!-- Animate css -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/animate.css" rel="stylesheet">
+
+    <!--Favicon-->
+    @*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">*@
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Assets/Aurora/Site/Static/assets/images/favicon (2).ico"/>
+    @*<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">*@
+
+    <!-- Custom styles CSS -->
+    <link href="~/Assets/Aurora/Site/Parallax/assets/css/style.css" rel="stylesheet" media="screen">
+
+    <style>
+        .syntaxhighlighter {
+            overflow-y: auto !important;
+            overflow-x: auto !important;
+            max-height: 400px;
+            width: 600px;
+        }
+
+        .modal-dialog {
+            overflow-y: auto !important;
+            overflow-x: auto !important;
+            max-height: 700px;
+            width: 1000px;
+            max-width: 80%
+        }
+
+        .timeline ul li {
+            list-style-type: none;
+            position: relative;
+            width: 6px;
+            margin: 0 auto;
+            padding-top: 50px;
+            background: #c6bb5b;
+        }
+
+            .timeline ul li::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: #c6bb5b;
+            }
+
+            .timeline ul li div {
+                position: relative;
+                bottom: 0;
+                width: 175px;
+                padding: 15px;
+                background: #c6bb5b;
+                color: white;
+            }
+
+                .timeline ul li div::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 7px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                }
+
+            .timeline ul li:nth-child(odd) div {
+                left: 45px;
+            }
+
+                .timeline ul li:nth-child(odd) div::before {
+                    left: -15px;
+                    border-width: 8px 16px 8px 0;
+                    border-color: transparent #c6bb5b transparent transparent;
+                }
+
+            .timeline ul li:nth-child(even) div {
+                left: -209px;
+            }
+
+                .timeline ul li:nth-child(even) div::before {
+                    right: -15px;
+                    border-width: 8px 0 8px 16px;
+                    border-color: transparent transparent transparent #c6bb5b;
+                }
+    </style>
+</head>
+<body>
+    <div id="palModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding:50px; text-align:center;">
+                <div class="modal-header" style="border-style:none;">
+                    <button type="button" onclick="Clear()" class="close" style="font-size:45px" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" style="border-style:none;">
+                        <h2>PALINDROMES</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="border-style:none;">
+                        <h4>Palindrome Identifier</h4>
+                        <p>Enter a word or string of letters, then click the button to find out whether or not it is a Palindrome!</p>
+                        <input type="text" id="mytext" placeholder="Enter a word or sentence." />
+                        <p>&nbsp;</p>
+                        <button onclick="Palindrome()" class="btn btn-sm btn-block btn-custom-1">Is this a Palindrome?</button>
+                        <p>&nbsp;</p>
+                        <div id="PalResult"></div>
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col-md-8" style="border-style:none;">
+                        <pre class="brush: js">
+
+                        <h4>Palindrome Identifier</h4>
+                        <p>Enter a word or string of letters, then click the button to find out whether or not it is a Palindrome!</p>
+                        <input type="text" id="mytext" placeholder="Enter a word or sentence." />
+
+                        <p>&nbsp;</p>
+                        <button onclick="Palindrome()" class="btn btn-sm btn-block btn-custom-1">Is this a Palindrome?</button>
+                        <p>&nbsp;</p>
+                        <div id="PalResult"></div>
+                        <p>&nbsp;</p>
+
+
+            function Palindrome() {
+            var string = document.getElementById("mytext").value;
+            var remove = /[\W_0-9]/g;
+            var regulartext = string.toLowerCase().replace(remove, "");
+            var reversetext = regulartext.split("").reverse().join("");
+
+            if (!isNaN(regulartext) || regulartext == ("~!@@#$%^&*()_+=-[]{}/?<,>.") || regulartext == "") {
+                alert("Please enter a word or string of letters into the field.");
+                return;
+            }
+
+            else if (reversetext == regulartext) {
+                document.getElementById("PalResult").innerHTML = regulartext + " is a Palindrome.";
+            }
+            else {
+                document.getElementById("PalResult").innerHTML = regulartext + " is not a Palandrome.";
+            }
+
+        }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="factModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding:50px; text-align:center;">
+                <div class="modal-header" style="border-style:none;">
+                    <button type="button" onclick="Clear()" class="close" style="font-size:45px" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" style="border-style:none;">
+                        <h2>FACTORIALS</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="border-style:none;">
+                        <h4>Factorials!</h4>
+                        <p>Enter a number and click the button to find the factorial of that number.</p>
+                        <input id="x" type="number" placeholder="Enter A Number" />
+                        <p>&nbsp;</p>
+                        <button onclick="factorial()" class="btn btn-sm btn-block btn-custom-1">Find the Factorial</button>
+                        <p>&nbsp;</p>
+                        <p id="FactResult"></p>
+                    </div>
+                    <div class="col-md-8" style="border-style:none;">
+                        <pre class="brush: js">
+                        <h4>Factorials!</h4>
+                        <p>Enter a number and click the button to find the factorial of that number.</p>
+                        <input id="x" type="number" placeholder="Enter A Number" />
+
+                        <p>&nbsp;</p>
+                        <button onclick="factorial()" class="btn btn-sm btn-block btn-custom-1">Find the Factorial</button>
+                        <p>&nbsp;</p>
+                        <p id="FactResult"></p>
+
+            function factorial() {
+            var x = Number(document.getElementById("x").value);
+
+            if (x == 0) {
+                result = 1
+                document.getElementById("FactResult").innerHTML = result;
+                return;
+            }
+            var result = x;
+            for (var i = x - 1; i >= 1; i--) {
+                result = result * i;
+
+            }
+            document.getElementById("FactResult").innerHTML = result;
+        }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fizzModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding:50px; text-align:center;">
+                <div class="modal-header" style="border-style:none;">
+                    <button type="button" onclick="Clear()" class="close" style="font-size:45px" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" style="border-style:none;">
+                        <h2>FIZZ! BUZZ!</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="border-style:none;">
+                        <h4>Fizz! Buzz!</h4>
+                        <p>
+                            Enter two numbers between one and one hundred. When the button is clicked,
+                            you will see a list from one to one hundred with each multiple of your first
+                            number listed as "fizz" and each multiple of your second number listed as "buzz."
+                            Multiples of both numbers will be listed as "fizzbuzz."
+                        </p>
+                        <input type="number" id="iterate" placeholder="Enter Number 1" />
+                        <p>&nbsp;</p>
+                        <input type="number" id="iterate2" placeholder="Enter Number 2" />
+                        <p>&nbsp;</p>
+                        <button onclick="Iteration()" class="btn btn-sm btn-block btn-custom-1">Click Me!</button>
+                        <div id="fizzbuzz"></div>
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col-md-8" style="border-style:none;">
+                        <pre class="brush: js">
+                        <h4>Fizz! Buzz!</h4>
+                        <p>
+             Enter two numbers between one and one hundred. When the button is clicked,
+             you will see a list from one to one hundred with each multiple of your first
+             number listed as "fizz" and each multiple of your second number listed as "buzz."
+             Multiples of both numbers will be listed as "fizzbuzz."
+            </p>
+                        <input type="number" id="iterate" placeholder="Enter Number 1" />
+
+                        <p>&nbsp;</p>
+                        <input type="number" id="iterate2" placeholder="Enter Number 2" />
+
+                        <p>&nbsp;</p>
+                        <button onclick="Iteration()" class="btn btn-sm btn-block btn-custom-1">Click Me!</button>
+                        <div id="fizzbuzz"></div>
+                        <p>&nbsp;</p>
+
+            function Iteration() {
+            var inputVal1 = document.getElementById("iterate").value;
+            var inputVal2 = document.getElementById("iterate2").value;
+            var result = ""
+
+            if (inputVal1 == "" || inputVal2 == "" || inputVal1 > 100 || inputVal2 > 100) {
+                alert("Please enter a number between 1 and 100 into each field.");
+                return;
+            }
+
+            for (var i = 1; i <= 100; i++) {
+
+                if (i % inputVal1 == 0 && i % inputVal2 == 0) {
+                    result = result + " fizzbuzz" + "<br>"
+                }
+
+                else if (i % inputVal1 == 0) {
+                    result = result + " fizz" + " "
+                }
+                else if (i % inputVal2 == 0) {
+                    result = result + " buzz" + "<br>"
+                }
+
+
+                else {
+                    result = result + i + " ";
+                }
+            }
+            document.getElementById("fizzbuzz").innerHTML = result
+        }
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mathModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding:50px; text-align:center;">
+                <div class="modal-header" style="border-style:none;">
+                    <button type="button" onclick="Clear()" class="close" style="font-size:45px" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" style="border-style:none;">
+                        <h2>ARITHMETIC FUNCTIONS</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="border-style:none;">
+                        <h4>Number Fun</h4>
+                        <p> Enter a number into each field and click the buttons below to get your answers!</p>
+                        <input id="test1" type="number" placeholder="Enter Number" />
+                        <p>&nbsp;</p>
+                        <input id="test2" type="number" placeholder="Enter Number" />
+                        <p>&nbsp;</p>
+                        <input id="test3" type="number" placeholder="Enter Number" />
+                        <p>&nbsp;</p>
+                        <input id="test4" type="number" placeholder="Enter Number" />
+                        <p>&nbsp;</p>
+                        <input id="test5" type="number" placeholder="Enter Number" />
+
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate()" class="btn btn-sm btn-block btn-custom-1">Get the sum of these numbers</button>
+                        <p id="result"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate2()" class="btn btn-sm btn-block btn-custom-1">Get the product of these numbers</button>
+                        <p id="result2"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate3()" class="btn btn-sm btn-block btn-custom-1">Find the smallest of these numbers</button>
+                        <p id="result3"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate4()" class="btn btn-sm btn-block btn-custom-1">Find the largest of these numbers</button>
+                        <p id="result4"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate5()" class="btn btn-sm btn-block btn-custom-1">Get the mean of these numbers</button>
+                        <p id="result5"></p>
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col-md-8" style="border-style:none; max-height:200px; ">
+                        <pre class="brush: js">
+                        <h4>Number Fun</h4>
+                        <p> Enter a number into each field and click the buttons below to get your answers!</p>
+                        <input id="test1" type="number" placeholder="Enter Number" />
+
+                        <p>&nbsp;</p>
+                        <input id="test2" type="number" placeholder="Enter Number" />
+
+                        <p>&nbsp;</p>
+                        <input id="test3" type="number" placeholder="Enter Number" />
+
+                        <p>&nbsp;</p>
+                        <input id="test4" type="number" placeholder="Enter Number" />
+
+                        <p>&nbsp;</p>
+                        <input id="test5" type="number" placeholder="Enter Number" />
+
+
+
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate()" class="btn btn-sm btn-block btn-custom-1">Get the sum of these numbers</button>
+                        <p id="result"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate2()" class="btn btn-sm btn-block btn-custom-1">Get the product of these numbers</button>
+                        <p id="result2"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate3()" class="btn btn-sm btn-block btn-custom-1">Find the smallest of these numbers</button>
+                        <p id="result3"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate4()" class="btn btn-sm btn-block btn-custom-1">Find the largest of these numbers</button>
+                        <p id="result4"></p>
+                        <p>&nbsp;</p>
+                        <button onclick="Calculate5()" class="btn btn-sm btn-block btn-custom-1">Get the mean of these numbers</button>
+                        <p id="result5"></p>
+                        <p>&nbsp;</p>
+
+       function Calculate() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number6 = Number(Number1 + Number2 + Number3 + Number4 + Number5);
+            document.getElementById("result").innerHTML = Number6 + " is the sum of these numbers!";
+        }
+
+        function Calculate2() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number7 = Number(Number1 * Number2 * Number3 * Number4 * Number5);
+            document.getElementById("result2").innerHTML = Number7 + " is the product of these numbers!";
+        }
+
+        function Calculate3() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number8 = Number(Math.min(Number1, Number2, Number3, Number4, Number5));
+            document.getElementById("result3").innerHTML = Number8 + " is the smallest of these numbers!";
+        }
+
+        function Calculate4() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number9 = Number(Math.max(Number1, Number2, Number3, Number4, Number5));
+            document.getElementById("result4").innerHTML = Number9 + " is the largest of these numbers!";
+        }
+
+        function Calculate5() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number10 = Number((Number1 + Number2 + Number3 + Number4 + Number5) / 5);
+            document.getElementById("result5").innerHTML = Number10 + " is the mean of these numbers!";
+        }
+
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="phoneModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="padding:50px; text-align:center;">
+                <div class="modal-header" style="border-style:none;">
+                    <button type="button" class="close" style="font-size:45px" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" style="border-style:none;">
+                        <h2>720.668.0370</h2>
+                    </div>
+                </div>
+                <h4>Calls and Texts Welcome</h4>
+            </div>
+        </div>
+    </div>
+    <div id="soonModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="padding:50px; text-align:center;">
+                <div class="modal-header" style="border-style:none;">
+                    <button type="button" class="close" style="font-size:45px" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" style="border-style:none;">
+                        <h2>Coming Soon!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preloader -->
+
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+
+    <!-- Home start -->
+
+    <section id="home" class="module-image js-height-full">
+        <img src="~/Assets/Aurora/Site/Static/assets/images/Cover.png" style="height:100%; width:100%" />
+        <div class="intro">
+
+            <div class="hello" style="color:black">Hello, my name is Bri Warrick and</div>
+            <h1 style="color:black">I am a .Net Developer</h1>
+            <div class="who-creates" style="color:black">ASP.NET, SQL, C#, JavaScript, Xamarin, HTML5, CSS</div>
+        </div>
+
+        <div class="mouse-icon">
+            <div class="wheel"></div>
+        </div>
+
+    </section>
+
+    <!-- Home end -->
+    <!-- Navigation start -->
+
+    <header class="header">
+
+        <nav class="navbar navbar-custom" role="navigation">
+
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Bri Warrick</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="custom-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#home">home</a></li>
+                        <li><a href="#portfolio">Works</a></li>
+                        <li><a href="#services">Javascript Exercises</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            UI Elements <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                            <li><a href="icons.html">Icons</a></li>
+                            <li><a href="components.html">Components</a></li>
+                            </ul>
+                            </li>*@
+                    </ul>
+                </div>
+
+            </div><!-- .container -->
+
+        </nav>
+
+    </header>
+
+    <!-- Navigation end -->
+    <!-- Portfolio start -->
+
+    <section id="portfolio" class="module paddingb-none">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <div class="module-header wow fadeInUp">
+                        <h2 class="module-title">My works</h2>
+                        <div class="module-line"></div>
+                        <div class="module-subtitle">
+                            A collection of recent projects and exercises.
+                        </div>
+                        <div class="module-line"></div>
+                    </div>
+
+                </div>
+
+            </div><!-- .row -->
+            <!-- Portfolio Filter start-->
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <ul id="filter">
+                        <li class="active" data-group="all">ALL</li>
+                        <li data-group="java">JS</li>
+                        <li data-group="web">WEB</li>
+                        <li data-group="mobile">MOBILE</li>
+                    </ul>
+
+                </div>
+
+            </div><!-- .row -->
+            <!-- Portfolio Filter end -->
+
+        </div><!-- .contaier -->
+
+        <ul class="portfolio-items-container">
+
+            <li class="portfolio-item" data-groups="all java">
+                <figure>
+                    <img class="img-responsive" src="~/Assets/Aurora/Site/Static/assets/images/depositphotos_123598408-stock-illustration-seamless-gold-geometric-pattern-with.jpg" />
+                    <figcaption>
+                        <a href="#services"></a>
+                        <div class="caption-inner">
+                            <h3 class="portfolio-item-title">Javascript Exercises</h3>
+                            <div class="portfolio-item-desc">Javascript, HTML, CSS</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <li class="portfolio-item" data-groups="all web">
+                <figure>
+                    <img class="img-responsive" src="~/Assets/Aurora/Site/Static/assets/images/FAN_gold_leadgrey_grande.jpg" style="height:612px" />
+                    <figcaption>
+                        <a href="http://bwarrick-shopping.azurewebsites.net/" target="_blank"></a>
+                        <div class="caption-inner">
+                            <h3 class="portfolio-item-title">Shopping Cart</h3>
+                            <div class="portfolio-item-desc">E-Commerce, ASP.NET MVC, C#</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <li class="portfolio-item" data-groups="all web">
+                <figure data-toggle="modal" data-target="#soonModal" style="cursor:pointer">
+                    <img class="img-responsive" src="~/Assets/Aurora/Site/Static/assets/images/goldpoly.jpg" />
+                    <figcaption>
+                        @*<a href="portfolio/image.html" class="simple-ajax-popup"></a>*@
+                        <div class="caption-inner">
+                            <h3 class="portfolio-item-title">Bug Tracker</h3>
+                            <div class="portfolio-item-desc">HTML5, Bootstrap, C#, SQLServer ASP.NET with MVC</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <li class="portfolio-item" data-groups="all web">
+                <figure data-toggle="modal" data-target="#soonModal" style="cursor:pointer">
+                    <img class="img-responsive" src="~/Assets/Aurora/Site/Static/assets/images/il_fullxfull.716190239_lgrc.jpg" />
+                    <figcaption>
+                        @*<a href="portfolio/slideshow.html" class="simple-ajax-popup"></a>*@
+                        <div class="caption-inner">
+                            <h3 class="portfolio-item-title">Financial Portal</h3>
+                            <div class="portfolio-item-desc">HTML5, Bootstrap, C#, SQLServer ASP.NET with MVC</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <li class="portfolio-item" data-groups="all mobile">
+                <figure data-toggle="modal" data-target="#soonModal" style="cursor:pointer">
+                    <img class="img-responsive" src="~/Assets/Aurora/Site/Static/assets/images/black-gol.jpg" />
+                    <figcaption>
+                        @*<a href="portfolio/video.html" class="simple-ajax-popup"></a>*@
+                        <div class="caption-inner">
+                            <h3 class="portfolio-item-title">Automotive Marketplace</h3>
+                            <div class="portfolio-item-desc">MVVM, C#, SQL Server,Android & iOS through Xamarin</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </li>
+
+            <li class="portfolio-item" data-groups="all web">
+                <figure style="height:400px">
+                    <img class="img-responsive" src="~/Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg" />
+                    <figcaption data-toggle="modal" data-target="#soonModal" style="cursor:pointer">
+                        @*<a href="portfolio/image.html" class="simple-ajax-popup"></a>*@
+                        <div class="caption-inner">
+                            <h3 class="portfolio-item-title">Personal Blog</h3>
+                            <div class="portfolio-item-desc">
+                                HTML 5, CSS, Javascript, Bootstrap, C#, SQL Server, ASP.NET with MVC
+                            </div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </li>
+
+        </ul><!-- .projects-container -->
+
+    </section>
+
+    <!-- Portfolio end -->
+    <!-- Callout start -->
+
+    <section class="callout">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 col-lg-6 col-lg-offset-2">
+                    <h2>ARE YOU READY TO START?</h2>
+                    <div class="callout-decription">
+                        I will be available for hire in December 2017.
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-2 callout-btn">
+                    <a href="#contact" class="btn btn-lg btn-block btn-custom-1">Contact me</a>
+                </div>
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section>
+
+    <!-- Callout end -->
+    <!-- Services start -->
+    <section id="services" class="module module-gray">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <div class="module-header wow fadeInUp">
+                        <h2 class="module-title">Javascript Exercises</h2>
+                        <div class="module-line"></div>
+                        <div class="module-subtitle">
+                            A group of number and word puzzles, all solved with the use of JavaScript.
+                        </div>
+                        <div class="module-line"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-3">
+
+                    <div class="iconbox wow bounceIn" data-toggle="modal" data-target="#palModal" style="background-image:
+    url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg');  cursor:pointer;">
+                        <div class="iconbox-icon">
+                            <span class="icon-shuffle"></span>
+                        </div>
+                        <div class="iconbox-text">
+                            <h3 class="iconbox-title">Palindrome</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <div class="iconbox wow bounceIn" data-toggle="modal" data-target="#factModal" style="background-image:
+    url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg'); cursor:pointer;">
+                        <div class="iconbox-icon">
+                            <span class="fa fa-exclamation-circle" style="font-size:40px"></span>
+                        </div>
+                        <div class="iconbox-text">
+                            <h3 class="iconbox-title">Factorials</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <div class="iconbox wow bounceIn" data-toggle="modal" data-target="#fizzModal" style="background-image:
+    url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg'); cursor:pointer;">
+                        <div class="iconbox-icon">
+                            <span class="icon-chemistry"></span>
+                        </div>
+                        <div class="iconbox-text">
+                            <h3 class="iconbox-title">FizzBuzz</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <div class="iconbox wow bounceIn" data-toggle="modal" data-target="#mathModal" style="background-image:
+    url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg'); cursor:pointer;">
+                        <div class="iconbox-icon">
+                            <span class="icon-calculator"></span>
+                        </div>
+                        <div class="iconbox-text">
+                            <h3 class="iconbox-title">Arithmetic Functions</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section>
+
+    <!-- Services end -->
+
+    <section class="timeline" id="resume" style=" max-width:100%; position:relative; background-image: url('../../Assets/Aurora/Site/Static/assets/images/Res Back.jpg'); ">
+        <div class="module-header wow fadeInUp">
+            <h2 class="module-title">My Resume</h2>
+            <div class="module-line"></div>
+            <div class="module-subtitle">
+                A look at what I've been up to the past few years...
+            </div>
+            <div class="module-line"></div>
+        </div>
+        <ul style=" overflow-y: auto !important;">
+            <li>
+                <div>
+                    <time><h3>2017</h3></time>
+                    <h5>Coder Foundry: 07.17 - Present</h5>
+                    Learned to be a top notch developer through Coder Foundry's project based learning model. Developed secure and robust
+                    applications using the following technologies: C# | ASP.NET MVC | JavaScript | HTML5 | CSS | SQL | Bootstrap | JQuery
+                    | LINQ | AngularJS | WebAPI | Xamarin
+                </div>
+            </li>
+            <li>
+                <div>
+                    <time><h3>2017</h3></time>
+                    <h5>Mondo: 01.17 - 07.17</h5>
+                    At Mondo, I worked as an Account Director for the national IT/Digital Marketing Staffing Agency. I spent my days building relationships
+                    with STEM professionals, helping hiring managers find the perfect resources for their teams. It was in my time with Mondo
+                    that my interest in the STEM field was sparked.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <time><h3>2016</h3></time>
+                    <h5>Northwestern Mutual: 03.16 - 01.17</h5>
+                    As a Financial Representative Assistant, I developed skills in financial analysis and reporting, and relationship
+                    management. I worked closely with a large clientele in order to manage client requests and help them reach their
+                    financial goals.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <time><h3>2014</h3></time>
+                    <h5>Allied Orion Real Estate: 03.14 - 03.16</h5>
+                    Allied Orion gave me my first job in Colorado as a Leasing Consultant for new luxury properties in the
+                    Denver Metro area. I enjoyed the  challenge of high volume sales while maintaining social media platforms
+                    and marketing initiatives.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <time><h3>2009</h3></time>
+                    <h5>Appalachian State University: 2009 - 2013</h5>
+                    Received a BSBA in Business Management with a focus in Entrepreneurship.
+                </div>
+            </li>
+            <li>
+                <div class="columns download">
+                    <p>
+                        <h3>
+                            <a href="~/Assets/Aurora/Site/Static/portfolio/Briana Warrick Resume.pdf" target="_blank" style="color:black" class="button">
+                                <i class="fa fa-download"></i>Download CV
+                            </a>
+                        </h3>
+                    </p>
+                </div>
+            </li>
+            <!-- more list items here -->
+        </ul>
+    </section>
+    <!--Resume End-->
+    <section class="callout">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h2 style="text-align:center">GET TO KNOW ME</h2>
+                </div>
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section>
+
+
+    <!-- About start -->
+
+
+
+    <section id="about">
+
+        <div class="row position-relative margin-0">
+
+            <div class="col-xs-12 col-md-6 side-image" style="background-image: url('../../Assets/Aurora/Site/Static/assets/images/white velvet.jpg');" />
+
+            <img src="~/Assets/Aurora/Site/Static/assets/images/Me 2.jpg" class="img-responsive" style="padding:50px; margin-top:60px;" />
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text" style="background-image:
+                    url('../../Assets/Aurora/Site/Static/assets/images/white velvet.jpg'); ">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="module-header module-header-left wow fadeInUp">
+                        <h2 class="module-title">About me</h2>
+                        <div class="module-subtitle">
+                            { "featureType": "person", "stylers": [{ "North Carolinian: 100%", "Creator: 90%", "Adventurer: 80%", "Problem Solver: 95%", "Puzzle Lover: 85%", "Student: 50%", "Dog Mom: 100%" }] }
+                        </div>
+                        <div class="module-line" style="color:#c6bb5b;"></div>
+                    </div>
+
+                </div>
+
+            </div><!-- .row -->
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <div class="iconboxleft wow fadeInUp">
+                        <div class="iconboxleft-icon">
+                            <span class="icon-directions"></span>
+                        </div>
+                        <div class="iconboxleft-text">
+                            <h3 class="iconboxleft-title">NC to CO</h3>
+                            <div class="iconboxleft-desc">
+                                I was born and raised in the beautiful state of North Carolina, where my immediate
+                                family still resides. Although I love the Blueridge and have a passion for swimming in the ocean,
+                                my sense of adventure led me West to Denver, CO in 2014. Almost four years later, and I am still
+                                enjoying exploring and discovering the amazing state of Colorado!
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="iconboxleft wow fadeInUp">
+                        <div class="iconboxleft-icon">
+                            <span class="icon-puzzle"></span>
+                        </div>
+                        <div class="iconboxleft-text">
+                            <h3 class="iconboxleft-title">Work</h3>
+                            <div class="iconboxleft-desc">
+                                I have always loved puzzles and riddles. I'm a motivated problem solver with a propensity for using
+                                a combination of creativity and logic to create effective and attractive solutions. If something is
+                                broken, i enjoy the challenge of finding a unique way to fix it.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div><!-- .row -->
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="iconboxleft wow fadeInUp" data-wow-delay=".2s">
+                        <div class="iconboxleft-icon">
+                            <span class="icon-picture"></span>
+                        </div>
+                        <div class="iconboxleft-text">
+                            <h3 class="iconboxleft-title">Extra Curriculars</h3>
+                            <div class="iconboxleft-desc">
+                                If I'm not behind the computer screen you can probably find me outside. Hiking, camping, hanging out
+                                in local parks, and going on long walks with my four legged companion, Bassi, are a few of my favorite
+                                things.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="iconboxleft wow fadeInUp" data-wow-delay=".2s">
+                        <div class="iconboxleft-icon">
+                            <span class="icon-rocket"></span>
+                        </div>
+                        <div class="iconboxleft-text">
+                            <h3 class="iconboxleft-title">Future</h3>
+                            <div class="iconboxleft-desc">
+                                I am excited to continue my journey with web development and begin a career that is challenging and
+                                rewarding. If I am in a position in which I can learn and grow, I am a happy camper.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- .row -->
+
+        </div><!-- col-xs-12 -->
+
+    </section>
+    <!-- .row -->
+    <!-- About end -->
+    <!-- Twitter start -->
+    @*<section id="twitter" class="module module-gray">
+        <div class="container">
+        <div class="row">
+
+        <div class="col-sm-6 col-sm-offset-3">
+
+        <div class="module-header wow fadeInUp">
+        <div class="module-icon"><span class="icon-social-twitter"></span></div>
+        </div>
+
+        <div class="testimonials owl-carousel wow fadeInUp"></div>
+
+        </div>
+
+        </div><!-- .row -->
+        </div><!-- .container -->
+        </section>*@
+
+    <!-- Twitter end -->
+    <!-- Google Map start-->
+    <section class="callout">
+        <div class="container">
+
+            <div class="row">
+                <div>
+                    <h2 style="text-align:center">MY FAVORITE CITY</h2>
+                </div>
+
+                @*<div class="col-md-4 col-lg-2 callout-btn">
+                    <a href="#contact" class="btn btn-lg btn-block" style="background-color:#c6bb5b; color:white;">Contact me</a>
+                    </div>*@
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section>
+
+    <section id="map-section">
+
+        <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196281.1293698081!2d-104.99519621556202!3d39.7645186736354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b80aa231f17cf%3A0x118ef4f8278a36d6!2sDenver%2C+CO!5e0!3m2!1sen!2sus!4v1504707335796" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+    </section>
+
+    <!-- Google Map end -->
+    <!-- Contact start -->
+
+    <section id="contact" class="module">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <div class="module-header">
+                        <h2 class="module-title">Contact</h2>
+                        <div class="module-line"></div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="iconbox wow bounceIn" data-toggle="modal" data-target="#phoneModal" style="cursor: pointer; background-image: url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg'); ">
+                                    <div class="iconbox-icon">
+                                        <span class="fa fa-phone" style="font-size:40px"></span>
+                                    </div>
+                                    <div class="iconbox-text">
+                                        <h3 class="iconbox-title">Call</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="https://www.linkedin.com/in/brianawarrick" target="_blank">
+                                    <div class="iconbox wow bounceIn" style="background-image: url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg');">
+                                        <div class="iconbox-icon">
+                                            <span class="fa fa-linkedin-square" style="font-size:40px"></span>
+                                        </div>
+                                        <div class="iconbox-text">
+                                            <h3 class="iconbox-title">Link</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="https://github.com/warrickbl" target="_blank">
+                                    <div class="iconbox wow bounceIn" style="background-image: url('../../Assets/Aurora/Site/Static/assets/images/d4e63265f151e681a3a0262e4b5729e2--marble-art-gold-marble.jpg');">
+                                        <div class="iconbox-icon">
+                                            <span class="fa fa-github" style="font-size:40px"></span>
+                                        </div>
+                                        <div class="iconbox-text">
+                                            <h3 class="iconbox-title">Git</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="module-line"></div>
+                    </div>
+
+                </div>
+
+            </div><!-- .row -->
+
+            <div class="row">
+
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <form id="contact-form" role="form">
+                        <div class="ajax-hidden">
+                            <div class="form-group wow fadeInUp">
+                                <label class="sr-only" for="c_name">Name</label>
+                                <input type="text" id="c_name" class="form-control" name="c_name" placeholder="Name">
+                            </div>
+
+                            <div class="form-group wow fadeInUp" data-wow-delay=".1s">
+                                <label class="sr-only" for="c_email">Email address</label>
+                                <input type="email" id="c_email" class="form-control" name="c_email" placeholder="E-mail">
+                            </div>
+
+                            <div class="form-group wow fadeInUp" data-wow-delay=".2s">
+                                <textarea class="form-control" id="c_message" name="c_message" rows="7" placeholder="Your message"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-block btn-custom-1 wow fadeInUp" data-wow-delay=".3s">
+                                Send it
+                            </button>
+                        </div>
+                        <div class="ajax-response"></div>
+                    </form>
+
+                </div>
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section>
+
+    <!-- Contact end -->
+    <!-- Footer start -->
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <ul class="social-links">
+                        <li><a href="#" class="wow fadeInUp"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="wow fadeInUp" data-wow-delay=".1s"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="wow fadeInUp" data-wow-delay=".2s"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="wow fadeInUp" data-wow-delay=".3s"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#" class="wow fadeInUp" data-wow-delay=".4s"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#" class="wow fadeInUp" data-wow-delay=".5s"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+
+                    <p class="copyright">
+                        © 2014 Aurora, All Rights Reserved.
+                    </p>
+
+                </div>
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </footer>
+
+    <!-- Footer end -->
+    <!-- Scroll-up -->
+
+    <div class="scroll-up">
+        <a href="#home"><i class="fa fa-angle-double-up"></i></a>
+    </div>
+
+    <!-- Javascript files -->
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Assets/Aurora/Site/Parallax/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/jquery.parallax-1.1.3.js"></script>
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/imagesloaded.pkgd.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Static/portfolio/image.html"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/jquery.shuffle.min.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/twitterFetcher.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/owl.carousel.min.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/jquery.fitvids.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/jquery.sticky.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/smoothscroll.js"></script>
+
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/wow.min.js"></script>
+
+
+    <!-- Google Maps -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCXzKcoTe3dR2GpMA8md5XpVysT_cwhAkc"></script>
+    @*<script src="http://maps.google.com/maps/api/js?sensor=true"></script>*@
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/gmaps.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/custom.js"></script>
+    <script src="~/Assets/Aurora/Site/Parallax/assets/js/custom-shuffle-init.js"></script>
+
+    <!--JS Exercise Scripts-->
+    <script>
+
+        function Calculate() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number6 = Number(Number1 + Number2 + Number3 + Number4 + Number5);
+            document.getElementById("result").innerHTML = Number6 + " is the sum of these numbers!";
+        }
+
+        function Calculate2() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number7 = Number(Number1 * Number2 * Number3 * Number4 * Number5);
+            document.getElementById("result2").innerHTML = Number7 + " is the product of these numbers!";
+        }
+
+        function Calculate3() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number8 = Number(Math.min(Number1, Number2, Number3, Number4, Number5));
+            document.getElementById("result3").innerHTML = Number8 + " is the smallest of these numbers!";
+        }
+
+        function Calculate4() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number9 = Number(Math.max(Number1, Number2, Number3, Number4, Number5));
+            document.getElementById("result4").innerHTML = Number9 + " is the largest of these numbers!";
+        }
+
+        function Calculate5() {
+            var Number1 = Number(document.getElementById("test1").value);
+            var Number2 = Number(document.getElementById("test2").value);
+            var Number3 = Number(document.getElementById("test3").value);
+            var Number4 = Number(document.getElementById("test4").value);
+            var Number5 = Number(document.getElementById("test5").value);
+
+            if (Number1 == "" || Number2 == "" || Number3 == "" || Number4 == "" || Number5 == "") {
+                alert("Please enter a number into each field.");
+                return;
+            }
+
+            var Number10 = Number((Number1 + Number2 + Number3 + Number4 + Number5) / 5);
+            document.getElementById("result5").innerHTML = Number10 + " is the mean of these numbers!";
+        }
+
+
+        function factorial() {
+            var x = Number(document.getElementById("x").value);
+
+            if (x == 0) {
+                result = 1
+                document.getElementById("FactResult").innerHTML = result;
+                return;
+            }
+            var result = x;
+            for (var i = x - 1; i >= 1; i--) {
+                result = result * i;
+
+            }
+            document.getElementById("FactResult").innerHTML = result;
+        }
+
+        function Iteration() {
+            var inputVal1 = document.getElementById("iterate").value;
+            var inputVal2 = document.getElementById("iterate2").value;
+            var result = ""
+
+            if (inputVal1 == "" || inputVal2 == "" || inputVal1 > 100 || inputVal2 > 100) {
+                alert("Please enter a number between 1 and 100 into each field.");
+                return;
+            }
+
+            for (var i = 1; i <= 100; i++) {
+
+                if (i % inputVal1 == 0 && i % inputVal2 == 0) {
+                    result = result + " fizzbuzz" + "<br>"
+                }
+
+                else if (i % inputVal1 == 0) {
+                    result = result + " fizz" + " "
+                }
+                else if (i % inputVal2 == 0) {
+                    result = result + " buzz" + "<br>"
+                }
+
+
+                else {
+                    result = result + i + " ";
+                }
+            }
+            document.getElementById("fizzbuzz").innerHTML = result
+        }
+
+        function Palindrome() {
+            var string = document.getElementById("mytext").value;
+            var remove = /[\W_0-9]/g;
+            var regulartext = string.toLowerCase().replace(remove, "");
+            var reversetext = regulartext.split("").reverse().join("");
+
+            if (!isNaN(regulartext) || regulartext == ("~!@@#$%^&*()_+=-[]{}/?<,>.") || regulartext == "") {
+                alert("Please enter a word or string of letters into the field.");
+                return;
+            }
+
+            else if (reversetext == regulartext) {
+                document.getElementById("PalResult").innerHTML = regulartext + " is a Palindrome.";
+            }
+            else {
+                document.getElementById("PalResult").innerHTML = regulartext + " is not a Palandrome.";
+            }
+
+        }
+
+        function Clear() {
+            $("#mytext").val("");
+            $("#PalResult").html("");
+            $("#x").val("");
+            $("#FactResult").html("");
+            $("#test1").val("");
+            $("#test2").val("");
+            $("#test3").val("");
+            $("#test4").val("");
+            $("#test5").val("");
+            $("#result").html("");
+            $("#result2").html("");
+            $("#result3").html("");
+            $("#result4").html("");
+            $("#result5").html("");
+            $("#iterate").val("");
+            $("#iterate2").val("");
+            $("#fizzbuzz").html("");
+        }
+        $('#palModal').on('hide.bs.modal', function () {
+            Clear();
+
+        });
+        $('#factModal').on('hide.bs.modal', function () {
+            Clear();
+
+        });
+        $('#fizzModal').on('hide.bs.modal', function () {
+            Clear();
+
+        });
+        $('#mathModal').on('hide.bs.modal', function () {
+            Clear();
+
+        });
+
+
+
+
+    </script>
+
+    <script src="~/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushJScript.js"></script>
+    <script>
+                    SyntaxHighlighter.all();
+    </script>
+
+</body>
+</html>
